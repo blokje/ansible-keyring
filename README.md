@@ -9,6 +9,9 @@ But also with the following backends (supported by python-keyring)
 
 Usage
 -----
+### Installation
+    sudo make install
+    make PREFIX=~/.local install # Installs in ~/.local/bin/
 
 ### Store password in (gnome-)keyring
     ansible-keyring set password-name
