@@ -15,6 +15,7 @@ Usage
     
 ### Usage with Ansible for vault
 Create the following script (eg. ~/.ansible_vault) and make it executable
+
     #!/bin/bash
     ansible-keyring get password-name
     # Set environment variable
