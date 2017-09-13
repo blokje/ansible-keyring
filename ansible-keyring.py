@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import argparse
 import getpass
 import keyring
@@ -22,7 +23,11 @@ def main():
 
     args = parser.parse_args()
     if not args.command:
-        parser.error("Missing action")
+        # Check if ANSIBLE_KEYRING_NAME is set
+        if os.environ.get('ANSIBLE_KEYRING_NAME'):
+            get_password(os.environ.get('ANSIBLE_KEYRING_NAME'))
+        else:
+            parser.error("Missing action")
 
     if args.command == "set": set_password(args.name, args.password)
     if args.command == "get": get_password(args.name)
