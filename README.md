@@ -17,9 +17,18 @@ Usage
     ansible-keyring set password-name
     
 ### Usage with Ansible for vault
-Create the following script (eg. ~/.ansible_vault) and make it executable
+Set the following environment variables:
+
+    ANSIBLE_KEYRING_NAME=keyname
+    ANSIBLE_VAULT_PASSWORD_FILE=$(which ansible-keyring)
+
+#### Wrapper script
+You can also create a wrapper script and make it executable
 
     #!/bin/bash
     ansible-keyring get password-name
     # Set environment variable
-    export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible_vault   
+
+Point ansible to the wrapper script
+
+    export ANSIBLE_VAULT_PASSWORD_FILE=~/path/to/wrapper_script
